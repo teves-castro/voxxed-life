@@ -65,3 +65,14 @@ class Game:
             self.generation += 1
             self.next_iteration()
         print(self)
+
+    def autoplay(self):
+        """
+        Run 1 iteration per second indefinitely
+        """
+        import time
+        while True:
+            time.sleep(1)
+            self.generation += 1
+            self.next_iteration()
+            print(self)
