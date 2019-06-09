@@ -1,4 +1,5 @@
-from game_of_life.game import *
+from game_of_life.game import Game
+from game_of_life.game import neighbourhood
 
 
 def test_get_neighbours():
