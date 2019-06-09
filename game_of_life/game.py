@@ -2,9 +2,6 @@
 """
 Simple python implementation of the Game of Life
 """
-import sys
-
-
 __author__ = "Thanasis Daglis"
 __email__ = "ath.daglis@gmail.com"
 
