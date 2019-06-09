@@ -2,6 +2,8 @@
 """
 Simple python implementation of the Game of Life
 """
+import time
+
 __author__ = "Thanasis Daglis"
 __email__ = "ath.daglis@gmail.com"
 
@@ -51,10 +53,12 @@ class Game:
         new_board = set([])
         candidates = set(n for cell in self.board for n in neighbourhood(cell))
         for cell in candidates:
-            alive = {3: True, 4: cell in self.board}.get(
-                sum((n in self.board) for n in neighbourhood(cell)), False
+            neighbourhood_sum = sum((n in self.board) for n in neighbourhood(cell))
+            cell_is_alive = {3: True, 4: cell in self.board}.get(
+                neighbourhood_sum, False
             )
-            [ignore_cell, add_cell][alive](new_board, cell)
+            # Alive cells are added to the board. Dead ones are ignored
+            [ignore_cell, add_cell][cell_is_alive](new_board, cell)
         self.board = new_board
 
     def play(self, iterations=1):
@@ -70,7 +74,6 @@ class Game:
         """
         Run 1 iteration per second indefinitely
         """
-        import time
         while True:
             time.sleep(1)
             self.generation += 1
