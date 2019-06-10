@@ -1,0 +1,15 @@
+{
+    "name": "gameoflife",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "start": "node index.js"
+    },
+    "author": "Golfo Vasiliou",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^24.8.0"
+    }
+}
