@@ -1,50 +1,34 @@
 const {
     getLivingNeighbours,
     getLivingNeighboursSum,
-    shouldCellLive
+    shouldCellLive,
+    getExpandedGrid,
+    shouldExpandGrid
 } = require('./util');
 
 asTable = require('as-table');
-const initSeed = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-    [0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-];
 module.exports = {
-    generateBoard: board => {
-        const newBoard = [];
-        board.forEach((line, x) => {
-            newBoard.push(
-                line.map((cell, y) => {
-                    const livingNeighbours = getLivingNeighbours(
-                        { x, y },
-                        board
-                    );
-                    const livingNeighboursSum = getLivingNeighboursSum(
-                        livingNeighbours
-                    );
-                    return +shouldCellLive(!!cell, livingNeighboursSum);
-                })
-            );
-        });
-        return newBoard;
-    },
+    generateBoard: board =>
+        board.map((line, x) => {
+            return line.map((cell, y) => {
+                const livingNeighbours = getLivingNeighbours({ x, y }, board);
+                const livingNeighboursSum = getLivingNeighboursSum(
+                    livingNeighbours
+                );
+                return +shouldCellLive(!!cell, livingNeighboursSum);
+            });
+        }),
     // Receives array of neighbours and returns how many of them are alive
-    beginGameOfLife: () => {
-        console.log(asTable(initSeed));
+    beginGameOfLife: initSeed => {
         let newBoard = module.exports.generateBoard(initSeed);
 
-        var interval = setInterval(function(str1, str2) {
+        var interval = setInterval(() => {
             console.log('-----------------------');
             console.log(asTable(newBoard));
-            newBoard = module.exports.generateBoard(newBoard);
+            newBoard = module.exports.generateBoard(
+                (shouldExpandGrid(newBoard) && getExpandedGrid(newBoard)) ||
+                    newBoard
+            );
         }, 1000);
     }
 };

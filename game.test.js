@@ -1,5 +1,5 @@
 const { beginGameOfLife, generateBoard } = require('./game');
-describe('util tests', () => {
+describe('game tests', () => {
     beforeEach(() => {
         //do something
     });
