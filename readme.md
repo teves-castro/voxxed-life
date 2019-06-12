@@ -1,11 +1,11 @@
 # Challenge
 
-This challenge involves submitting an implementation for the Game of Life in the form of a pull request to this GitHub repo. A prize will be awarded to the "best" solution (according to the challenge rules further down).
+This challenge involves submitting an implementation for the Game of Life in the form of a pull request to this GitHub repo. A prize will be awarded to the "best" solution (according to the challenge's rules further down).
 Start by forking this repo [voxxed-life](https://github.com/equalexperts/voxxed-life) and then submit a PR with your solution in a branch name after your GitHub handle.
 
 ## Prize
 
-We'll be offering an headset [Link should go here](https://link-should-go-here.com) to the two highest scoring submissions
+We'll be offering a [noise cancelling wireless headset](https://en-us.sennheiser.com/wireless-headphones-bluetooth-noise-cancelling-hd-4-50-btnc) to the highest scoring submission
 
 ## Challenge rules
 
@@ -43,3 +43,6 @@ The universe of the "Game of Life" is an infinite, two-dimensional orthogonal gr
 The initial pattern constitutes the "seed" of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a "tick". Each generation is a "pure function" of the preceding one. The rules continue to be applied repeatedly to create further generations.
 
 For more information check [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) in wikipedia.
+
+
+Good luck!
