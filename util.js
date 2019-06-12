@@ -1,6 +1,6 @@
 module.exports = {
     // Receives board of neighbours and returns how many of them are alive
-    getLivingNeighboursSum: cells => cells.reduce((sum, cell) => sum + cell, 0),
+    getLivingNeighboursSum: cells => cells.length,
     shouldCellLive: (isAlive, livingNeighbours) =>
         (isAlive && livingNeighbours == 2) || livingNeighbours == 3,
     getLivingNeighbours: (pos, board) =>

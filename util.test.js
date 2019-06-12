@@ -5,11 +5,14 @@ const {
 } = require('./util');
 
 describe('util tests', () => {
-    beforeAll(() => {});
+    let board;
+    beforeAll(() => {
+        board = [[0, 0, 0], [1, 0, 0], [1, 0, 0]];
+    });
     afterAll(() => {
         //do something
     });
-    const board = [[0, 0, 0], [1, 0, 0], [1, 0, 0]];
+
     // Test getLivingNeighbours
     test('[0,0] neighbours are [1]', () => {
         expect(getLivingNeighbours({ x: 0, y: 0 }, board)).toEqual([1]);
@@ -22,17 +25,18 @@ describe('util tests', () => {
     test('[0, 2] neighbours are []', () => {
         expect(getLivingNeighbours({ x: 0, y: 2 }, board)).toEqual([]);
     });
+
     // Test getLivingNeighboursSum
-    test('[0,0] contains 0 alive neighbours', () => {
-        expect(getLivingNeighboursSum([0, 0])).toBe(0);
+    test('[] contains 0 alive neighbours', () => {
+        expect(getLivingNeighboursSum([])).toBe(0);
     });
 
-    test('[0, 1] contains 1 alive neighbour', () => {
-        expect(getLivingNeighboursSum([0, 1])).toBe(1);
+    test('[1] contains 1 alive neighbour', () => {
+        expect(getLivingNeighboursSum([1])).toBe(1);
     });
 
-    test('[0, 1, 1] contains 2 alive neighbours', () => {
-        expect(getLivingNeighboursSum([0, 1, 1])).toBe(2);
+    test('[1, 1] contains 2 alive neighbours', () => {
+        expect(getLivingNeighboursSum([1, 1])).toBe(2);
     });
 
     // Test shouldCellLive
