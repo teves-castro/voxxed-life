@@ -1,3 +1,97 @@
+# Conway's Game of Life in Java
+
+This is a naive implementation of Conway's Game of Life in ``Java`` made for
+fun and profit. It is an entry to Equal Experts' *Voxxed Athens* [challenge](https://github.com/teves-castro/voxxed-life).
+
+## Implementation
+
+The code is written in ``Java`` and ``SpringBoot``. There are some
+auxiliary libraries used such as ``JUnit`` for testing and ``Lombok`` for getters/setters/etc.
+generation.
+
+The application provides a REST interaface for interaction with the user.
+
+Only the alive cells are presented. That way we need to store less cells
+and use the memory more efficiently.
+
+An infinite grid is supported.
+
+## Test
+
+From within the `LifeWebService` directory run the following command in Linux:
+
+```bash
+./mvnw test
+```
+
+In Windows:
+
+```bash
+mvnw.cmd test
+```
+
+## Execute
+
+To start the REST service run in Linux:
+
+```bash
+./mvnw spring-boot:run
+```
+
+In Windows:
+
+```bash
+mvnw.cmd spring-boot:run
+```
+
+When the application has been started, then you may send a POST request
+providing the current state of Life and get as a response the next mutation.
+
+By default the application should listen to ``http://localhost:8080``
+
+Below is an example in ``curl``.
+
+```bash
+curl -X POST \
+  'http://localhost:8080/life/mutate' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "cells": [
+        {
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 1
+            }
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 0
+            }
+        }
+    ]
+}'
+```
+This request should return the below response:
+
+```bash
+{"cells":[{"position":{"x":0.0,"y":0.0}},{"position":{"x":0.0,"y":1.0}},{"position":{"x":1.0,"y":0.0}},{"position":{"x":1.0,"y":1.0}}]}
+```
+
+The ``json`` object that the application exchanges contains *only* the alive cells.
+
+Optionaly, one may pass the desired number of mutation steps like that: ``https://localhost:8080/life/mutate?iterations=<number-of-iterations>``
+
+Beware that any number less than *1* will cause no mutations to take place.
+
+Below there is the original information of the challenge.
+
 # Challenge
 
 This challenge involves submitting an implementation for the Game of Life in the form of a pull request to this GitHub repo. A prize will be awarded to the "best" solution (according to the challenge's rules further down).
