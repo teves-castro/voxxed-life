@@ -1,3 +1,4 @@
+asTable = require('as-table');
 module.exports = {
     // Receives board of neighbours and returns how many of them are alive
     getLivingNeighboursSum: cells => cells.length,
@@ -51,5 +52,12 @@ module.exports = {
             pos.x < board[0].length - 1 &&
                 pos.y < board[0].length - 1 &&
                 board[pos.x + 1][pos.y + 1]
-        ].filter(cell => cell > 0)
+        ].filter(cell => cell > 0),
+    printBoard: board => {
+        const newBoard = board.map(line =>
+            line.map(cell => (cell == 1 && '*') || ' ')
+        );
+        console.log('\x1b[36m', '-----------------------');
+        console.log('\x1b[31m', asTable(newBoard));
+    }
 };

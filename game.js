@@ -3,10 +3,10 @@ const {
     getLivingNeighboursSum,
     shouldCellLive,
     getExpandedGrid,
-    shouldExpandGrid
+    shouldExpandGrid,
+    printBoard
 } = require('./util');
 
-asTable = require('as-table');
 module.exports = {
     generateBoard: board =>
         board.map((line, x) => {
@@ -23,8 +23,7 @@ module.exports = {
         let newBoard = module.exports.generateBoard(initSeed);
 
         var interval = setInterval(() => {
-            console.log('-----------------------');
-            console.log(asTable(newBoard));
+            printBoard(newBoard);
             newBoard = module.exports.generateBoard(
                 (shouldExpandGrid(newBoard) && getExpandedGrid(newBoard)) ||
                     newBoard
