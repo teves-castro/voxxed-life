@@ -11,10 +11,6 @@ describe('util tests', () => {
     beforeAll(() => {
         board = [[0, 0, 0], [1, 0, 0], [1, 0, 0]];
     });
-    afterAll(() => {
-        //do something
-    });
-
     // Test getLivingNeighbours
     test('[0,0] neighbours are [1]', () => {
         expect(getLivingNeighbours({ x: 0, y: 0 }, board)).toEqual([1]);

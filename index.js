@@ -13,5 +13,6 @@ const { beginGameOfLife } = require('./game');
         [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
+
     beginGameOfLife(initSeed);
 })();

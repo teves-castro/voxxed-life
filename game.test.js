@@ -1,11 +1,5 @@
-const { beginGameOfLife, generateBoard } = require('./game');
+const { generateBoard } = require('./game');
 describe('game tests', () => {
-    beforeEach(() => {
-        //do something
-    });
-    afterAll(() => {
-        //do something
-    });
     test('[[0,0], [0,0]] gives [[0,0], [0,0]]', () => {
         expect(generateBoard([[0, 0], [0, 0]])).toEqual([[0, 0], [0, 0]]);
     });
