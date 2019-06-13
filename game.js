@@ -13,17 +13,24 @@ const Game = {
      * @param  {Array} board A 2D array that represents the board
      * @return {Array} The new board
      */
-    generateBoard: board =>
-        board.map((line, x) =>
+    generateBoard: board => {
+        const expandedBoard =
+            (shouldExpandGrid(board) && getExpandedGrid(board)) || board;
+
+        return expandedBoard.map((line, x) =>
             line.map((cell, y) => {
-                const livingNeighbours = getLivingNeighbours({ x, y }, board);
+                const livingNeighbours = getLivingNeighbours(
+                    { x, y },
+                    expandedBoard
+                );
                 const livingNeighboursSum = getLivingNeighboursSum(
                     livingNeighbours
                 );
 
                 return +shouldCellLive(!!cell, livingNeighboursSum);
             })
-        ),
+        );
+    },
     /**
      * Initialize the game of life
      * @param  {Array} initSeed A 2D array that represents the board
@@ -33,10 +40,7 @@ const Game = {
 
         const interval = setInterval(() => {
             printBoard(newBoard);
-            newBoard = Game.generateBoard(
-                (shouldExpandGrid(newBoard) && getExpandedGrid(newBoard)) ||
-                    newBoard
-            );
+            newBoard = Game.generateBoard(newBoard);
         }, 1000);
     }
 };
