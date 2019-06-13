@@ -6,7 +6,7 @@ Solution for https://github.com/equalexperts/voxxed-life challenge
 
 ## Getting started
 
-Install the necessary packages (Jest for testing and as-table for displaying the grid) with `npm install` to get started.
+Install the necessary packages (`Jest` for testing and `as-table` for displaying the grid) with `npm install` to get started.
 
 Start the game with `npm run start` and watch the game of life come to life in your console.
 
