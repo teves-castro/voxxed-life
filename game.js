@@ -9,7 +9,7 @@ const {
 
 const Game = {
     /**
-     * Process and generate the next step in game of life
+     * Generate the next step in game of life
      * @param  {Array} board A 2D array that represents the board
      * @return {Array} The new board
      */
