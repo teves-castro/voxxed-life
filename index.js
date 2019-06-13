@@ -1,3 +1,5 @@
+// Golfo Vasiliou faysvas@yahoo.com
+
 const { beginGameOfLife } = require('./game');
 
 (function() {
