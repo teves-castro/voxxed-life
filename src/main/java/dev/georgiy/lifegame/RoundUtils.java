@@ -12,7 +12,13 @@ public class RoundUtils {
             if(count>=2 && count<=3){ newGenPoints.add(point); }
             //todo remove ifs
         });
-        //todo implement new cells
+        Set<Point> deadNeighbors = new HashSet<>();
+        pointsSeeded.forEach(p -> deadNeighbors.addAll(p.getNeighbourPoints()));
+        deadNeighbors.removeAll(pointsSeeded);
+        deadNeighbors.forEach(point -> {
+            int count = point.countNeighborsInSet(pointsSeeded);
+            if(count==3){ newGenPoints.add(point); }
+        });
         return  newGenPoints;
     }
 }

@@ -37,4 +37,14 @@ public class RoundTest {
         Set<Point> nextGenPoints = RoundUtils.getNextGeneration(pointsSeeded);
         Assert.assertTrue(!nextGenPoints.contains(new PointIntImpl(0,1)));
     }
+
+    @Test
+    public void pointBorn(){
+        Set<Point> pointsSeeded = new HashSet<>();
+        pointsSeeded.add(new PointIntImpl(0,0));
+        pointsSeeded.add(new PointIntImpl(0,2));
+        pointsSeeded.add(new PointIntImpl(1,1));
+        Set<Point> nextGenPoints = RoundUtils.getNextGeneration(pointsSeeded);
+        Assert.assertTrue(nextGenPoints.contains(new PointIntImpl(0,1)));
+    }
 }
