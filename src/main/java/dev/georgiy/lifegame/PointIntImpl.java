@@ -24,7 +24,6 @@ public class PointIntImpl implements Point{
     }
 
     public Set<Point> getNeighbourPoints() {
-        //todo implement endless field
         Set<Point> neighbours = new HashSet<>();
         neighbours.add(new PointIntImpl(x+1, y));
         neighbours.add(new PointIntImpl(x+1, y-1));
