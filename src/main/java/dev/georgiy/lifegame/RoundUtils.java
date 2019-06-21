@@ -1,10 +1,13 @@
 package dev.georgiy.lifegame;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RoundUtils {
+
+    private RoundUtils(){}
+
     public static Set<Point> getNextGeneration(Set<Point> pointsSeeded) {
         Set<Point> newGenPoints = calculateDiedPoints(pointsSeeded);
         newGenPoints.addAll(calculateBornPoints(pointsSeeded));
@@ -12,29 +15,21 @@ public class RoundUtils {
     }
 
     private static Set<Point> calculateDiedPoints(Set<Point> pointsSeeded) {
-
         return pointsSeeded.stream()
-                .filter(p -> p.countNeighborsInSet(pointsSeeded)>=2
-                        && p.countNeighborsInSet(pointsSeeded)<=3)
+                .filter(p -> {
+                    int count = p.countNeighborsInSet(pointsSeeded);
+                    return count >= 2 && count<= 3;
+                })
                 .collect(Collectors.toSet());
-
     }
 
     private static Set<Point> calculateBornPoints(Set<Point> pointsSeeded) {
-        Set<Point> newGenPoints = new HashSet<>();
-        Set<Point> deadNeighbors = new HashSet<>();
-        pointsSeeded.forEach(p -> deadNeighbors.addAll(p.getNeighbourPoints()));
+        Set<Point> deadNeighbors = pointsSeeded.stream()
+                .map(Point::getNeighbourPoints)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toSet());
         deadNeighbors.removeAll(pointsSeeded);
-        deadNeighbors.forEach(point -> {
-            int count = point.countNeighborsInSet(pointsSeeded);
-            if (count == 3) {
-                newGenPoints.add(point);
-            }
-            //todo remove ifs
-        });
-        return newGenPoints;
+        return deadNeighbors.stream().filter(p -> p.countNeighborsInSet(pointsSeeded)==3).collect(Collectors.toSet());
+
     }
-
-
-
 }
