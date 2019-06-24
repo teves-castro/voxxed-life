@@ -45,4 +45,14 @@ The initial pattern constitutes the "seed" of the system. The first generation i
 For more information check [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) in wikipedia.
 
 
-Good luck!
+## Contacts
+mayshmaz@gmail.com
+
+## Description
+In RoundUtils class use Set<Point> getNextGeneration(Set<Point> pointsSeeded)
+pointsSeeded: set of Points with x and y coordinates which represent initially live cells
+output: set of Points with x and y coordinates which represent survived and new cells after one round
+   
+examples of usage are present in unit tests and Application.java
+   
+   
