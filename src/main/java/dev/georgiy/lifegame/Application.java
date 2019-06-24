@@ -16,14 +16,18 @@ public class Application {
         Scanner scanner = new Scanner(in);
         out.println("Please enter seeds location:");
         String exitKey="";
-        while(!exitKey.equals("exit")){
+        while(!exitKey.equals("q")){
             out.println("Please enter seeds location X:");
             int x = scanner.nextInt();
             out.println("Please enter seeds location Y:");
             int y = scanner.nextInt();
             points.add(new PointIntImpl(x,y));
+            scanner.nextLine();
+            out.println("Press enter to add one more point, enter q to proceed");
             exitKey = scanner.nextLine();
         }
+        out.println("The initial seed is:");
+        out.println(points);
         out.println("Please enter number of generations:");
         int generations = scanner.nextInt();
         Set<Point> newPoints = points;

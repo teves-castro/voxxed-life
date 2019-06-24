@@ -55,4 +55,9 @@ public class PointIntImpl implements Point{
     public int hashCode() {
         return Objects.hash(getX(), getY());
     }
+
+    @Override
+    public String toString(){
+        return String.format("(%d,%d)", x, y);
+    }
 }
