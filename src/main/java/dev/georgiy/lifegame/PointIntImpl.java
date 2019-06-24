@@ -44,11 +44,9 @@ public class PointIntImpl implements Point{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PointIntImpl)) return false;
-        PointIntImpl pointInt = (PointIntImpl) o;
-        return getX().equals(pointInt.getX()) &&
-                getY().equals(pointInt.getY());
+        return this == o
+                || o instanceof Point && getX().equals(((Point)o).getX()) &&
+                getY().equals(((Point)o).getY());
     }
 
     @Override
